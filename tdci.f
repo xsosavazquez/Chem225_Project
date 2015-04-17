@@ -30,7 +30,7 @@
 
 !Begin TDCI Code
       period=2*pi/(w*delta)
-      float,dimension(:),allocate::y=0
+      real,dimension(:),allocate::y=0
       allocate(y(maxstep))
       do 20 t = 0, maxstep
         if(envelope.eq.'cosine') then
