@@ -42,6 +42,46 @@
         endif
    20 continue
    
-   testing
+      t=0 !Define time variable
+	real, dimension(:), allocatable :: direction,norm_direc
+	direction= (/CoordsX(1)-CoordsX(0),CoordsY(1)-CoordsY(0),CoordsZ(1)-CoordsZ)(0)/)
+	norm_direc = norm(direction) !may have to create "real function norm(x)" function if I don't find the intrinsic function of this
+	
+	Write(*,*) direction
+	
+	real, dimension(:) :: dip = 0, norm = 0, maxstep = 0
+	real, dimension(:,:) :: v = 0
+	
+	allocate (dip(maxstep), norm(maxstep), v(maxstep,NSim), efield(maxstep))
+	
+	norm(0)=1
+	norm(1)=1
+	v(0,0) =1
+	v(1,0) =1
+	
+	do 10 t=1, maxstep
+	
+	 efield(t) = emax * (sin(w*delta*t + phase))	
+	 
+10 continue	
+	
+	integer :: i = 0,j = 0 , k=0
+!	real, dimension(:) :: 
+	real, dimension(:,:) :: h0 = 0 , d0 = 0
+	
+	allocate (h0(NSim,NSim), d0(NSim,NSim))
+	
+	do 20 k=0 , NSim
+	
+	h0(i,i) = Energies(i)
+	i = i + 1 
+	
+20 Continue	
+
+	do 30 i=0, NSim
+		do 40 j=0, NSim
+			d0(i,j)= dot_product(norm_direc,TransDipoles(i,j))
+	40 Continue
+30 Continue
    
       End Program tdci
