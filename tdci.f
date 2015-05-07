@@ -7,7 +7,7 @@
       NAtom=2           !Number of atoms in the system
       NStates=3         !Number of excited states in the system
       NMOs=2            !Number of molecular orbitals in the CAS active space
-      NSim=2            !Number of states in the simulation
+      NSim=3            !Number of states in the simulation
       EMax=0.025        !Field Strength in AU
       Maxstep=1000      !Number of iteration steps
       Delta=0.05        !Stepsize in AU
