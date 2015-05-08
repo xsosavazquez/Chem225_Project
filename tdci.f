@@ -1,7 +1,16 @@
       Program tdci
+      Implicit None
+     
+! Defining types
 
-      Real::NAtoms,NStates,NMOs,NSim,EMax,Maxstep,Delta,w,chirp
-      Real::ncyc,phase,pi=3.14159,
+Type :: Vector_Trans
+      Real,Dimension(3)::Coord
+End Type
+
+! Defining variables and arrays
+      Integer::NAtoms,NStates,NMOs,NSim
+      Real::EMax,Maxstep,Delta,w,chirp
+      Real::ncyc,phase,pi=3.14159265359,mag_direction=0, sum_direction=0
       Character(len=10)::envelope
 
       NAtom=2           !Number of atoms in the system
